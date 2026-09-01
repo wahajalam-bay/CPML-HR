@@ -1,0 +1,43 @@
+[project]
+name = "cpml-recruitment-api"
+version = "1.0.0"
+description = "Recruitment analytics API for the CPML Command Center"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "pydantic>=2.9",
+    "pydantic-settings>=2.6",
+    "sqlalchemy>=2.0.36",
+    "alembic>=1.14",
+    "psycopg[binary]>=3.2",
+    "redis>=5.2",
+    "celery>=5.4",
+    "python-jose[cryptography]>=3.3",
+    "google-auth>=2.36",
+    "google-api-python-client>=2.151",
+    "gspread>=6.1",
+    "httpx>=0.28",
+    "orjson>=3.10",
+    "structlog>=24.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.8",
+    "mypy>=1.13",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+plugins = ["pydantic.mypy"]

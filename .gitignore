@@ -1,0 +1,63 @@
+# ==========================================================================
+#  CPML HR
+# ==========================================================================
+
+# ---- Dependencies and build output ---------------------------------------
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+.vercel
+
+# ---- Local Postgres cluster ----------------------------------------------
+# scripts/pg-dev.mjs writes a real PostgreSQL data directory here. It is
+# hundreds of megabytes, it is machine-specific, and once seeded it holds every
+# candidate record plus the password hashes of every local account.
+.pgdata/
+
+# ---- Secrets --------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+
+# ---- Raw source data ------------------------------------------------------
+# Deliberately NOT committed.
+#
+#   the workbook       16 MB, and the widest surface: national identity
+#                      numbers, email addresses, salary history, free-text
+#                      remarks — fields the application never encodes into the
+#                      payload it ships.
+#   canonical.jsonl    44 MB, and a build artefact: `python etl/normalize.py`
+#                      regenerates it from the workbook byte for byte.
+#
+# Neither is needed to run or deploy the platform. Keep the workbook wherever
+# your organisation keeps HR source files, and run the ETL locally.
+*.xlsx
+*.xls
+platform/data/
+CPML Recruitment Sheet*
+
+# ---- Screenshots ----------------------------------------------------------
+# The harness captures full pages of live data, so every shot is a picture of
+# real candidate names and phone numbers.
+.shots/
+*.png
+*.jpeg
+*.jpg
+!platform/web/public/**/*.png
+
+# ---- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ruff_cache/
+.pytest_cache/
+
+# ---- Editor / OS ----------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
